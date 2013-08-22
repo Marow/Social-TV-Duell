@@ -1,0 +1,57 @@
+body {
+	background: ;
+	margin: 0 0 auto;
+}
+
+.wrapper {
+	background: #D9D9D9;
+	width: 99%;
+	text-align: center;
+	height: 80%;
+	min-height: 300px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border-radius: 5px;
+	z-index: 2;
+	border-top: #ADADAD 7px solid;
+}
+
+.wrapper-tweet {
+	background: #ADADAD;
+	width: 80%;
+	text-align: center;
+	height: 60%;
+	min-height: 500px;
+	margin: 0 auto;
+	border-radius: 5px;
+	z-index: 1;
+}
+
+.avatar {
+}
+
+.wrapper-left {
+	margin-top: 2%;
+	float: left;
+	width: 50%;
+	font-weight: 600;
+}
+
+.wrapper-right {
+	margin-top: 2%;
+	float: right;
+	width: 50%;
+	font-weight: 600;
+}
+
+.tweet-left {
+	margin-top: 35px;
+	float: left;
+	width: 50%;
+}
+
+.tweet-right {
+	margin-top: 35px;
+	float: right;
+	width: 50%;
+}
