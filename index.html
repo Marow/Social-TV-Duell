@@ -1,35 +1,84 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<script src="chart.js"></script>
-
-	<script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
 <body>
 	<div class="wrapper-tweet">
 		<div class="wrapper">
+
 			<div class="wrapper-img">
-			<div class="avatar"><img src="images/angelamerkel.jpg"></div>
-			669 Tweets
+			<div class="avatar">
+				<img src="images/angelamerkel.jpg">
+			</div>
+			<span id="tweets1">639<br/><span class="tweet-text">Tweets</span></span>
+			<div class="tweet-button"><a href="https://twitter.com/intent/tweet?button_hashtag=ichbineintest" class="twitter-hashtag-button" data-size="large"></a></div>
+			</div>
+
+			<div class="chart-wrapper">
+				<div id="chart1"><div id="chart1Perc"></div></div>
+				<div id="chart2"><div id="chart2Perc"></div></div>
+				<div class="tweet-button" style="margin-top: 351px!important;"></div>
 			</div>
 
 			<div class="wrapper-img">
-			<div class="avatar"><img src="images/peersteinbrueck.jpg"></div>
-			532 Tweets
+			<div class="avatar">
+				<img src="images/peersteinbrueck.jpg">
+			</div>
+			<span id="tweets2">532<br/><span class="tweet-text">Tweets</span></span>
+			<div class="tweet-button"><a href="https://twitter.com/intent/tweet?button_hashtag=ichbineinanderertesttweet" class="twitter-hashtag-button" data-size="large"></a></div>
 			</div>
 		</div>
-
-		<div class="tweet">
-			<a href="https://twitter.com/intent/tweet?button_hashtag=ichbineintest" class="twitter-hashtag-button" data-size="large"></a>
-		</div>
-
-		<div class="tweet">
-			<a href="https://twitter.com/intent/tweet?button_hashtag=ichbineinanderertesttweet" class="twitter-hashtag-button" data-size="large"></a>
-		</div>
-
 		<div class="clear"></div>
 	</div>
 
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script>
+jQuery(function ($){
+	var x = parseInt($('#tweets1').text());
+	var y = parseInt($('#tweets2').text());
+
+	//*
+	var animationDuration = 1500;
+	var total = x+y;
+	var xPerc = x/total;
+	var yPerc = y/total;
+
+	$('#chart1').animate({height: (xPerc*250)+"px"}, animationDuration);
+	$('#chart2').animate({height: (yPerc*250)+"px"}, animationDuration);
+
+	var animStart = +new Date;
+	var countX = function () {
+		var animPerc = Math.min(1, (+new Date - animStart) / animationDuration)
+		var text = Math.round(animPerc * xPerc * 10000)/100 + ""
+		text = text.split('.').join(',')
+		if (text[text.length-2] == ",") text += "0"
+
+		$('#chart1Perc').text(text + "%")
+
+		if (animPerc < 1)
+			window.setTimeout(countX, 1)
+	}
+	countX()
+	var countY = function () {
+		var animPerc = Math.min(1, (+new Date - animStart) / animationDuration)
+		var text = Math.round(animPerc * yPerc * 10000)/100 + ""
+		text = text.split('.').join(',')
+		if (text[text.length-2] == ",") text += "0"
+
+		$('#chart2Perc').text(text + "%")
+
+		if (animPerc < 1)
+			window.setTimeout(countY, 1)
+	}
+	countY()
+
+
+	//*/
+	
+	/*
+	$('#chart1').animate({height: (Math.min(1, x/y)*250)+"px"}, 1500);
+	$('#chart2').animate({height: (Math.min(1, y/x)*250)+"px"}, 1500);
+	//*/
+})
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </body>

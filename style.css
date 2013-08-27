@@ -1,30 +1,68 @@
 html, body, .wrapper-tweet {
 	margin: 0;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 
 .wrapper-tweet {
 	padding: 0 0 50px 0;
 	text-align: center;
 	font-weight: 600;
-	background: #ADADAD;
-	border-radius: 5px;
-	border-top: #ADADAD 7px solid;
-	border-left: #ADADAD 7px solid;
-	border-right: #ADADAD 7px solid;
+	min-width: 1150px;
 }
 
 .wrapper {
+	background: #f4f4f4; /* Old browsers */
+	background: -moz-linear-gradient(top, #f4f4f4 0%, #a1a7b1 48%, #a1a7b1 53%, #a1a7b1 54%, #a1a7b1 55%, #a1a7b1 57%, #a1a7b1 59%, #fcfcfc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(48%,#a1a7b1), color-stop(53%,#a1a7b1), color-stop(54%,#a1a7b1), color-stop(55%,#a1a7b1), color-stop(57%,#a1a7b1), color-stop(59%,#a1a7b1), color-stop(100%,#fcfcfc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f4f4f4 0%,#a1a7b1 48%,#a1a7b1 53%,#a1a7b1 54%,#a1a7b1 55%,#a1a7b1 57%,#a1a7b1 59%,#fcfcfc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f4f4f4 0%,#a1a7b1 48%,#a1a7b1 53%,#a1a7b1 54%,#a1a7b1 55%,#a1a7b1 57%,#a1a7b1 59%,#fcfcfc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f4f4f4 0%,#a1a7b1 48%,#a1a7b1 53%,#a1a7b1 54%,#a1a7b1 55%,#a1a7b1 57%,#a1a7b1 59%,#fcfcfc 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #f4f4f4 0%,#a1a7b1 48%,#a1a7b1 53%,#a1a7b1 54%,#a1a7b1 55%,#a1a7b1 57%,#a1a7b1 59%,#fcfcfc 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#fcfcfc',GradientType=0 ); /* IE6-9 */
+
+	
 	width: 100%;
 	min-height: 400px;
-	background: #D9D9D9;
 	border-radius: 5px;
+	position: relative;
 	display: inline-block;
 	box-sizing: border-box;
 }
 
+.chart-wrapper {
+	background-image: url(images/schatten_balken.png);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	margin-top: 2%;
+	float: left;
+	width: 20%;
+	position: relative;
+	height: 250px;
+}
+
+#chart1 {
+	position: absolute;
+	left: 50px;
+	bottom: 0;
+	width: 70px;
+	height: 0%;
+	background: black;
+	overflow: visible !important;
+}
+
+#chart2 {
+	position: absolute;
+	right: 50px;
+	bottom: 0;
+	width: 70px;
+	height: 0%;
+	background: red;
+	overflow: visible !important;
+}
+
 .avatar
 {
-	margin: 0 auto 80px auto;
+	margin: 0 auto 15px auto;
 	z-index: 1;
 	width: 280px;
 	height: 250px;
@@ -65,8 +103,7 @@ html, body, .wrapper-tweet {
 .wrapper-img {
 	margin-top: 2%;
 	float: left;
-	width: 50%;
-	min-width: 300px;
+	width: 40%;
 }
 
 .clear
@@ -74,12 +111,44 @@ html, body, .wrapper-tweet {
 	clear:both;
 }
 
-.tweets {
-
+.tweet-button {
+	margin-top: 101px;
+	padding-top: 20px;
+	background: #A1A7B1;
+	height: 50px;
 }
+
 .tweet {
 	margin-top: 35px;
 	float: left;
 	width: 50%;
-	min-width: 300px;
+	min-width: 360px;
+}
+.tweet-text {
+	letter-spacing: 0.5;
+	font-weight: 300;
+}
+#tweets1 {
+	letter-spacing: 1.5;
+	margin-right: 175px;
+	text-align: right;
+	float: right;
+}
+#tweets2 {
+	letter-spacing: 1.5;
+	margin-right: 175px;
+	text-align: right;
+	float: right;
+}
+#chart1Perc {
+	font-size: 20;
+	margin-top: -28px;
+	color: black;
+	text-align: left;
+}
+#chart2Perc {
+	font-size: 20;
+	margin-top: -28px;
+	color: red;
+	text-align: left;
 }
