@@ -1,5 +1,5 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
 
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
@@ -9,7 +9,7 @@
 
 			<div class="wrapper-img">
 			<div class="avatar">
-				<img src="images/angelamerkel.jpg">
+				<img class="avatarsize" src="images/angelamerkel.jpg">
 			</div>
 			<span id="tweets1">639<br/><span class="tweet-text">Tweets</span></span>
 			<div class="tweet-button"><a href="https://twitter.com/intent/tweet?button_hashtag=ichbineintest" class="twitter-hashtag-button" data-size="large"></a></div>
@@ -18,18 +18,19 @@
 			<div class="chart-wrapper">
 				<div id="chart1"><div id="chart1Perc"></div></div>
 				<div id="chart2"><div id="chart2Perc"></div></div>
-				<div class="tweet-button" style="margin-top: 351px!important;"></div>
+				<div class="tweet-button tweet-footer" ></div>
 			</div>
 
 			<div class="wrapper-img">
 			<div class="avatar">
-				<img src="images/peersteinbrueck.jpg">
+				<img class="avatarsize" src="images/peersteinbrueck.jpg">
 			</div>
 			<span id="tweets2">532<br/><span class="tweet-text">Tweets</span></span>
-			<div class="tweet-button"><a href="https://twitter.com/intent/tweet?button_hashtag=ichbineinanderertesttweet" class="twitter-hashtag-button" data-size="large"></a></div>
+			<div class="tweet-button"><a href="https://twitter.com/intent/tweet?button_hashtag=testtweet" class="twitter-hashtag-button" data-size="large"></a></div>
 			</div>
 		</div>
 		<div class="clear"></div>
+		<span class="pro7hashtag"><a href="https://twitter.com/intent/tweet?button_hashtag=p7tvduell" class="twitter-hashtag-button" data-size="small"></a><br/>23123</span>
 	</div>
 
 <script>
@@ -43,17 +44,17 @@ jQuery(function ($){
 	var xPerc = x/total;
 	var yPerc = y/total;
 
-	$('#chart1').animate({height: (xPerc*250)+"px"}, animationDuration);
-	$('#chart2').animate({height: (yPerc*250)+"px"}, animationDuration);
-
 	var animStart = +new Date;
 	var countX = function () {
 		var animPerc = Math.min(1, (+new Date - animStart) / animationDuration)
-		var text = Math.round(animPerc * xPerc * 10000)/100 + ""
+		var currentPerc = Math.round(animPerc * xPerc * 10000)/100
+
+		var text = currentPerc + ""
 		text = text.split('.').join(',')
 		if (text[text.length-2] == ",") text += "0"
 
 		$('#chart1Perc').text(text + "%")
+		$('#chart1').css('height', currentPerc+"%")
 
 		if (animPerc < 1)
 			window.setTimeout(countX, 1)
@@ -61,11 +62,14 @@ jQuery(function ($){
 	countX()
 	var countY = function () {
 		var animPerc = Math.min(1, (+new Date - animStart) / animationDuration)
-		var text = Math.round(animPerc * yPerc * 10000)/100 + ""
+		var currentPerc = Math.round(animPerc * yPerc * 10000)/100
+
+		var text = currentPerc + ""
 		text = text.split('.').join(',')
 		if (text[text.length-2] == ",") text += "0"
 
 		$('#chart2Perc').text(text + "%")
+		$('#chart2').css('height', currentPerc+"%")
 
 		if (animPerc < 1)
 			window.setTimeout(countY, 1)
